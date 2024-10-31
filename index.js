@@ -2,8 +2,8 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const userRoute = require("../server/route/UserRoute");
-const messageRoute = require("../server/route/MessagesRoute");
+const userRoutes = require("./route/UserRoute");
+const messageRoutes = require("./route/MessagesRoute");
 const socket = require("socket.io");
 // Place this at the top
 
@@ -19,7 +19,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use("/api/auth", userRoute);
+app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoute);
 
 // Mongoose connection
